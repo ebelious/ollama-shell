@@ -351,14 +351,14 @@ echo
 read -p "Select:  " DEF
 echo
 case "$DEF" in
-    Y|y) fn_default && return && main;;
-    S|s) fn_server && return && main;;
-    M|m) fn_llms && return && main;;
-    P|p) fn_pull && return && main;;
-    R|r) fn_update && return && main;;
-    I|i) fn_info && return && main;;
-    U|u) fn_upollama && return && main;;
-    D|d) fn_delete && return && main;;  
+    Y|y) fn_default && main;;
+    S|s) fn_server && main;;
+    M|m) fn_llms && main;;
+    P|p) fn_pull && main;;
+    R|r) fn_update && main;;
+    I|i) fn_info && main;;
+    U|u) fn_upollama && main;;
+    D|d) fn_delete && main;;  
     Q|q) exit 0;;  
     *) main;; 
 esac
