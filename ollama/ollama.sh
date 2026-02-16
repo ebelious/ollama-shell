@@ -44,22 +44,22 @@ done
 read -p $'\nSelect the model number: ' OPTION
 # If Q/q → restart
 if [[ "$OPTION" == "q" || "$OPTION" == "Q" ]]; then
-    main
+    main && return
 fi
 if [[ "$OPTION" == "d" || "$OPTION" == "D" ]]; then
-    fn_delete
+    fn_delete && return
 fi
 if [[ "$OPTION" == "p" || "$OPTION" == "P" ]]; then
-    fn_pull
+    fn_pull && return
 fi
 if [[ "$OPTION" == "i" || "$OPTION" == "I" ]]; then
-    fn_pull
+    fn_info && return
 fi
 # If not a valid number → invalie
 if ! [[ "$OPTION" =~ ^[0-9]+$ ]] || (( OPTION < 1 || OPTION > ${#LIST[@]} )); then
     echo -ne "\e[31mInvalid Selection\e[0m"
     sleep 1
-    fn_delete
+    fn_llms
 fi
 SELECTED=${LIST[$((OPTION -1))]}
 sed -i "s/model=.*$/model="$SELECTED"/g" $CONFIG
@@ -231,16 +231,16 @@ done
 read -p $'\nSelect the model number: ' OPTION
 # If Q/q → restart
 if [[ "$OPTION" == "q" || "$OPTION" == "Q" ]]; then
-    main
+    main && return
 fi
 if [[ "$OPTION" == "m" || "$OPTION" == "M" ]]; then
-    fn_llms
+    fn_llms && return
 fi
 if [[ "$OPTION" == "p" || "$OPTION" == "P" ]]; then
-    fn_pull
+    fn_pull && return
 fi
 if [[ "$OPTION" == "i" || "$OPTION" == "I" ]]; then
-    fn_pull
+    fn_info && return
 fi
 
 # If not a valid number → invalie
@@ -351,14 +351,14 @@ echo
 read -p "Select:  " DEF
 echo
 case "$DEF" in
-    Y|y) fn_default && main;;
-    S|s) fn_server && main;;
-    M|m) fn_llms && main;;
-    P|p) fn_pull && main;;
-    R|r) fn_update && main;;
-    I|i) fn_info && main;;
-    U|u) fn_upollama && main;;
-    D|d) fn_delete && main;;  
+    Y|y) fn_default && return && main;;
+    S|s) fn_server && return && main;;
+    M|m) fn_llms && return && main;;
+    P|p) fn_pull && return && main;;
+    R|r) fn_update && return && main;;
+    I|i) fn_info && return && main;;
+    U|u) fn_upollama && return && main;;
+    D|d) fn_delete && return && main;;  
     Q|q) exit 0;;  
     *) main;; 
 esac
