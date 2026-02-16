@@ -70,7 +70,7 @@ source $CONFIG
 # Pulls doen LLms from ollama
 fn_pull() {
     PULL=$(cat "$L_MODEL" | fzf --prompt "[base model] ")
-    fn_spin "\e[8;1H\3[J\e[32m[\e[0m\e[36m\e[0m\e[32m]\e[0m \e[34mGathering Versions\e[0m\r" & pid=$!
+    fn_spin "\e[8;1H\e[J\e[32m[\e[0m\e[36m\e[0m\e[32m]\e[0m \e[34mGathering Versions\e[0m\r" & pid=$!
 
     truncate -s0 "$V_MODEL"
     curl -s "https://ollama.com/library/${PULL}/tags" \
