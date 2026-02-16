@@ -1,0 +1,8 @@
+qwq:32b
+qwq:32b-fp16
+qwq:32b-preview-fp16
+qwq:32b-preview-q4_K_M
+qwq:32b-preview-q8_0
+qwq:32b-q4_K_M
+qwq:32b-q8_0
+qwq:latest
